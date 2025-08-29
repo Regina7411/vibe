@@ -1,13 +1,15 @@
 import { useTRPC } from "@/trpc/client";
 
 const Page = () => {
-  const trpc = useTRPC ();
-  trpc.hello.queryOptions({ text: "Hello! "});
+  const trpc = useTRPC();
+  const { data } = trpc.createAI.useQuery({ text: "Hello from the client!" });
+
   return (
     <div>
-      Heloo World
+      <p>Hello World</p>
+      {data && <p>{data.greeting}</p>}
     </div>
   );
-}
+};
 
-export default Page; 
+export default Page;
