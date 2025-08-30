@@ -1,4 +1,3 @@
-"use client"
 import { Suspense } from "react";
 import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
 import { getQueryClient, trpc } from "@/trpc/server";
@@ -6,7 +5,9 @@ import { Client } from "./client";
 
 const Page = async () => {
   const queryClient = getQueryClient();
-  void queryClient.prefetchQuery(
+
+  // Esperar que termine el prefetch
+  await queryClient.prefetchQuery(
     trpc.createAI.queryOptions({ text: "Antonio. PREFETCH" })
   );
 

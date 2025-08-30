@@ -1,8 +1,9 @@
 "use client";
 
 import { useTRPC } from "@/trpc/client";
+
 import { useSuspenseQuery } from "@tanstack/react-query";
-import { useEffect, useState } from "react";
+
 
 export const Client = () => {
   const trpc = useTRPC();
@@ -10,12 +11,10 @@ export const Client = () => {
     trpc.createAI.queryOptions({ text: "Antonio. PREFETCH" })
   );
   
-  useEffect(() => {}, []);
-  const [state, setState] = useState();
-
   return (
     <div>
       {JSON.stringify(data)}
     </div>
   );
 };
+ 
